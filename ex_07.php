@@ -1,0 +1,119 @@
+<?php
+class Character implements iMove {
+    protected $name;
+    protected $endurance;
+    protected $agility;
+    protected $strength;
+    protected $mana;
+
+    const CLASSE = "Character";
+
+    public function __construct($name) {
+        $this->name = $name;
+        $this->endurance = 50;
+        $this->agility = 2;
+        $this->strength = 2;
+        $this->mana = 2;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getEndurance() {
+        return $this->endurance;
+    }
+
+    public function getAgility() {
+        return $this->agility;
+    }
+
+    public function getStrength() {
+        return $this->strength;
+    }
+
+    public function getMana() {
+        return $this->mana;
+    }
+
+    public function getClasse() {
+        return self::CLASSE;
+    }
+
+    public function moveRight() {
+        echo $this->name . ": moves right.\n";
+    }
+
+    public function moveLeft() {
+        echo $this->name . ": moves left.\n";
+    }
+
+    public function moveUp() {
+        echo $this->name . ": moves up.\n";
+    }
+
+    public function moveDown() {
+        echo $this->name . ": moves down.\n";
+    }
+
+}
+
+class Paladin extends Character {
+    const CLASSE = "Paladin";
+
+    public function __construct($name) {
+        parent::__construct($name);
+        $this->name = $name;
+        $this->endurance = 100;
+        $this->agility = 8;
+        $this->strength = 10;
+        $this->mana = 3;
+        echo $this->name . ": I'll engrave my name in the history !\n";
+    }
+
+    public function __destruct() {
+        echo $this->name . ": Aarrg I can't believe I'm dead...\n";
+    }
+
+    public function attack() {
+        echo $this->name . ": I'll crush you with my hammer !\n";
+    }
+}
+
+class Mage extends Character
+{
+    const CLASSE = "Mage";
+
+    public function __construct($name)
+    {
+        parent::__construct($name);
+        $this->name = $name;
+        $this->endurance = 70;
+        $this->agility = 10;
+        $this->strength = 3;
+        $this->mana = 10;
+        echo $this->name . ": May the gods be with me.\n";
+    }
+
+    public function __destruct()
+    {
+        echo $this->name . ": By the four gods, I passed away...\n";
+    }
+
+    public function attack()
+    {
+        echo $this->name . ": Feel the power of my magic !\n";
+    }
+}
+
+interface iMove {
+    public function moveRight();
+
+    public function moveLeft();
+
+    public function moveUp();
+
+    public function moveDown();
+
+}
+?>
